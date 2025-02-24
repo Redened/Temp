@@ -9,13 +9,14 @@
         <!-- <meta name='description' content='' /> -->
         <!-- <meta name='author' content='' /> -->
         <!-- <link rel='icon' type='image/x-icon' href='' /> -->
-         
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
 
         <title>Contact</title>
         <link rel="stylesheet" href="../style.css" />
+        <script defer src="../js/script.js"></script>
     </head>
     <body class="page-contact">
         <header>
@@ -40,7 +41,7 @@
 
                         <button><a href="tel:+">Call Now!</a></button>
 
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="mobile-nav-open" id="mNavOpen" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <link xmlns="" type="text/css" id="dark-mode" rel="stylesheet" href="" />
                             <style xmlns="" type="text/css" id="dark-mode-custom-style" />
                             <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round" />
@@ -48,6 +49,26 @@
                             <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round" />
                         </svg>
                     </div>
+                </div>
+
+                <div class="mobile-nav hidden" id="mNav">
+                    <svg class="mobile-nav-close" id="mNavClose" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <link xmlns="" type="text/css" id="dark-mode" rel="stylesheet" href="" />
+                        <style xmlns="" type="text/css" id="dark-mode-custom-style" />
+                        <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round" />
+                        <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round" />
+                        <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+
+                    <button><a href="tel:+">Call Now!</a></button>
                 </div>
             </div>
         </header>
@@ -65,24 +86,26 @@
                 <section class="contact">
                     <div class="section-content">
                         <form action="" method="">
-                            <div>
-                                <label for="firstName">First Name *</label>
-                                <label for="lastName">Last Name *</label>
+                            <div class="form-info">
+                                <div>
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" name="firstName" id="firstName" />
+                                </div>
+                                <div>
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" name="lastName" id="lastName" />
+                                </div>
                             </div>
 
-                            <div>
-                                <input type="text" name="firstName" id="firstName" />
-                                <input type="text" name="lastName" id="lastName" />
-                            </div>
-
-                            <div>
-                                <label for="email">Email *</label>
-                                <label for="subject">Subject</label>
-                            </div>
-
-                            <div>
-                                <input type="text" name="email" id="email" />
-                                <input type="text" name="subject" id="subject" />
+                            <div class="form-info">
+                                <div>
+                                    <label for="email">Email *</label>
+                                    <input type="text" name="email" id="email" />
+                                </div>
+                                <div>
+                                    <label for="subject">Subject</label>
+                                    <input type="text" name="subject" id="subject" />
+                                </div>
                             </div>
 
                             <div><label for="message">Leave us a message...</label></div>

@@ -128,6 +128,64 @@ header {
                     aspect-ratio: 1/1;
                     margin-left: 2.5rem;
                     stroke: #fd5521;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            z-index: 3;
+            background-color: #f7f7f7;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 4rem;
+
+            .mobile-nav-close {
+                position: absolute;
+                right: 2rem;
+                top: 4.55rem;
+                stroke: black;
+                width: 5rem;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 4rem;
+                margin-top: 40%;
+
+                li a {
+                    color: black;
+                    font-size: 1.8rem;
+                }
+            }
+
+            button {
+                background-color: #fd5521;
+                border: 1px solid #fd5521;
+                margin-left: 0.2rem;
+                transition: background-color 0.4s;
+                font-weight: 300;
+                font-size: 1.6rem;
+
+                a {
+                    transition: color 0.4s;
+                    color: black;
+                    display: inline-block;
+                    padding: 1.5rem 5.25rem;
+                    font-size: 1.6rem !important;
+                }
+
+                &:hover {
+                    background-color: black;
+
+                    a {
+                        color: #fd5521;
+                    }
                 }
             }
         }
@@ -1052,6 +1110,10 @@ footer {
         }
     }
 
+    main .grid-container section .section-content > * {
+        position: static !important;
+    }
+
     //! /////////////////////////// MOBILE TYPOGRAPHY
 
     p {
@@ -1064,15 +1126,13 @@ footer {
         font-size: 1.4rem !important;
     }
 
-    footer {
-        .info {
-            .title {
-                font-size: 1.8rem !important;
-            }
+    footer .info {
+        span.title {
+            font-size: 1.8rem !important;
+        }
 
-            span {
-                font-size: 1.4rem !important;
-            }
+        span {
+            font-size: 1.4rem !important;
         }
 
         .copyright {
@@ -1094,6 +1154,7 @@ footer {
 //! /////////////////////////// PAGES
 
 body {
+    //! /////////////////////////// SERVICES
     &.page-services {
         header {
             min-height: auto;
@@ -1152,31 +1213,32 @@ body {
                 }
             }
         }
-    }
 
-    @media screen and (width <= 900px) {
-        &.page-services main {
-            padding-block: 1rem 2rem !important;
+        @media screen and (width <= 900px) {
+            main {
+                padding-block: 1rem 2rem !important;
 
-            .heading-section {
-                margin-bottom: 2rem !important;
-            }
+                .heading-section {
+                    margin-bottom: 2rem !important;
+                }
 
-            section:not(.heading-section) {
-                flex-direction: column !important;
-                grid-column: fullwidth;
+                section:not(.heading-section) {
+                    flex-direction: column !important;
+                    grid-column: fullwidth;
 
-                .section-content {
-                    padding: 1.5rem 2rem 2rem 2rem !important;
+                    .section-content {
+                        padding: 1.5rem 2rem 2rem 2rem !important;
 
-                    p {
-                        width: 100%;
+                        p {
+                            width: 100%;
+                        }
                     }
                 }
             }
         }
     }
 
+    //! /////////////////////////// PROJECTS
     &.page-projects {
         header {
             min-height: auto;
@@ -1214,32 +1276,33 @@ body {
                 }
             }
         }
-    }
 
-    @media screen and (width <= 800px) {
-        &.page-projects main {
-            padding-block: 1rem 6rem !important;
+        @media screen and (width <= 800px) {
+            main {
+                padding-block: 1rem 6rem !important;
 
-            .grid-container {
-                row-gap: 2rem !important;
-            }
-            
-            .grid-wrapper {
-                grid-template-columns: 1fr !important;
-                row-gap: 4rem !important;
-
-                img {
-                    max-height: 45rem;
-                    margin-bottom: 1rem !important;
+                .grid-container {
+                    row-gap: 2rem !important;
                 }
 
-                h3 {
-                    text-align: center;
+                .grid-wrapper {
+                    grid-template-columns: 1fr !important;
+                    row-gap: 4rem !important;
+
+                    img {
+                        max-height: 45rem;
+                        margin-bottom: 1rem !important;
+                    }
+
+                    h3 {
+                        text-align: center;
+                    }
                 }
             }
         }
     }
 
+    //! /////////////////////////// ABOUT
     &.page-about {
         header {
             min-height: auto;
@@ -1254,6 +1317,7 @@ body {
         }
     }
 
+    //! /////////////////////////// CAREERS
     &.page-careers {
         header {
             min-height: auto;
@@ -1286,14 +1350,14 @@ body {
                     align-items: flex-start;
 
                     span {
-                        font-size: 2.25rem;
+                        font-size: clamp(1.8rem, 3vw, 2.2rem);
                         line-height: 3.5rem;
                         margin-bottom: auto;
                     }
 
                     p {
                         font-weight: 300;
-                        font-size: 1.45rem;
+                        font-size: 1.6rem;
                         letter-spacing: 0.75px;
                         line-height: 3rem;
                         width: 100%;
@@ -1305,6 +1369,7 @@ body {
                         background-color: white;
                         border: 1px solid #fd5521;
                         font-weight: 300;
+                        white-space: nowrap;
                         transition: color 0.4s, background-color 0.4s, border 0.4s;
 
                         &:hover {
@@ -1315,12 +1380,74 @@ body {
                 }
             }
         }
+
+        @media screen and (width <= 1520px) {
+            .grid-wrapper {
+                grid-template-columns: repeat(3, 1fr) !important;
+
+                div:not(:has(*)) {
+                    display: none;
+                }
+            }
+        }
+
+        @media screen and (width <= 1200px) {
+            .grid-wrapper {
+                div {
+                    padding: 4rem !important;
+                }
+            }
+        }
+
+        @media screen and (width <= 1000px) {
+            .grid-wrapper {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media screen and (width <= 900px) {
+            main {
+                padding-block: 1rem 2rem !important;
+
+                .grid-container {
+                    row-gap: 3rem;
+                }
+            }
+        }
+
+        @media screen and (width <= 600px) {
+            .grid-container section:has(.grid-wrapper) {
+                grid-column: fullwidth !important;
+            }
+
+            .grid-wrapper {
+                grid-template-columns: 1fr !important;
+
+                div {
+                    padding: 3rem 2rem !important;
+
+                    span {
+                        margin-bottom: 0 !important;
+                    }
+
+                    p {
+                        margin-block: 1rem 2rem !important;
+                    }
+
+                    button {
+                        padding: 1.75rem 3rem !important;
+                        font-size: 1.5rem;
+                    }
+
+                    br {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
-    @media screen and (width <= 900px) {
-        
-    }
-
+    //! /////////////////////////// CONTACT
     &.page-contact {
         header {
             min-height: auto;
@@ -1347,16 +1474,24 @@ body {
                         display: flex;
                         flex-direction: column;
                         height: 100%;
-                        padding-block: 3.75rem;
+                        padding-block: 1.75rem;
                         max-width: 47rem;
                         justify-content: flex-start;
 
-                        div {
-                            display: flex;
+                        .form-info {
                             gap: 2.5rem;
 
+                            div {
+                                flex: 100%;
+                                flex-direction: column;
+                            }
+                        }
+
+                        div {
+                            display: flex;
+
                             * {
-                                flex: 50%;
+                                flex: 100%;
                             }
 
                             label {
@@ -1407,5 +1542,47 @@ body {
                 }
             }
         }
+
+        @media screen and (width <= 1000px) {
+            main {
+                padding-block: 1rem 2rem !important;
+
+                .grid-container {
+                    row-gap: 3rem;
+
+                    .contact {
+                        flex-direction: column;
+
+                        .section-content {
+                            margin-bottom: 2rem !important;
+
+                            form {
+                                max-width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (width <= 600px) {
+            main .contact .section-content {
+                form {
+                    .form-info {
+                        flex-direction: column;
+                    }
+
+                    input {
+                        padding-left: 0 !important  ;
+                    }
+                }
+            }
+        }
     }
+}
+
+//! CAREERS APPLICATION APPLY NOW BUTTON JAVASCRIPT
+
+* {
+    // outline: 1px solid red !important;
 }

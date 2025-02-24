@@ -342,6 +342,56 @@ header .container .nav .nav-list svg {
   aspect-ratio: 1/1;
   margin-left: 2.5rem;
   stroke: #fd5521;
+  cursor: pointer;
+}
+header .container .mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+header .container .mobile-nav .mobile-nav-close {
+  position: absolute;
+  right: 2rem;
+  top: 4.55rem;
+  stroke: black;
+  width: 5rem;
+}
+header .container .mobile-nav ul {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 40%;
+}
+header .container .mobile-nav ul li a {
+  color: black;
+  font-size: 1.8rem;
+}
+header .container .mobile-nav button {
+  background-color: #fd5521;
+  border: 1px solid #fd5521;
+  margin-left: 0.2rem;
+  transition: background-color 0.4s;
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+header .container .mobile-nav button a {
+  transition: color 0.4s;
+  color: black;
+  display: inline-block;
+  padding: 1.5rem 5.25rem;
+  font-size: 1.6rem !important;
+}
+header .container .mobile-nav button:hover {
+  background-color: black;
+}
+header .container .mobile-nav button:hover a {
+  color: #fd5521;
 }
 header .container .intro {
   padding: 10.75rem 0 0 5.7rem;
@@ -1030,6 +1080,9 @@ footer .container .m-return-to-marker {
   footer .container .m-return-to-marker {
     display: block;
   }
+  main .grid-container section .section-content > * {
+    position: static !important;
+  }
   p {
     width: 100% !important;
     font-size: 1.4rem !important;
@@ -1038,13 +1091,13 @@ footer .container .m-return-to-marker {
   button a {
     font-size: 1.4rem !important;
   }
-  footer .info .title {
+  footer .info span.title {
     font-size: 1.8rem !important;
   }
   footer .info span {
     font-size: 1.4rem !important;
   }
-  footer .copyright {
+  footer .info .copyright {
     font-size: 1.2rem !important;
   }
   .company span.signature-name {
@@ -1198,13 +1251,13 @@ body.page-careers main .grid-wrapper div:has(*) {
   align-items: flex-start;
 }
 body.page-careers main .grid-wrapper div:has(*) span {
-  font-size: 2.25rem;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   line-height: 3.5rem;
   margin-bottom: auto;
 }
 body.page-careers main .grid-wrapper div:has(*) p {
   font-weight: 300;
-  font-size: 1.45rem;
+  font-size: 1.6rem;
   letter-spacing: 0.75px;
   line-height: 3rem;
   width: 100%;
@@ -1215,11 +1268,62 @@ body.page-careers main .grid-wrapper div:has(*) button {
   background-color: white;
   border: 1px solid #fd5521;
   font-weight: 300;
+  white-space: nowrap;
   transition: color 0.4s, background-color 0.4s, border 0.4s;
 }
 body.page-careers main .grid-wrapper div:has(*) button:hover {
   color: black;
   border: 1px solid black;
+}
+@media screen and (width <= 1520px) {
+  body.page-careers .grid-wrapper {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  body.page-careers .grid-wrapper div:not(:has(*)) {
+    display: none;
+  }
+}
+@media screen and (width <= 1200px) {
+  body.page-careers .grid-wrapper div {
+    padding: 4rem !important;
+  }
+}
+@media screen and (width <= 1000px) {
+  body.page-careers .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (width <= 900px) {
+  body.page-careers main {
+    padding-block: 1rem 2rem !important;
+  }
+  body.page-careers main .grid-container {
+    row-gap: 3rem;
+  }
+}
+@media screen and (width <= 600px) {
+  body.page-careers .grid-container section:has(.grid-wrapper) {
+    grid-column: fullwidth !important;
+  }
+  body.page-careers .grid-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  body.page-careers .grid-wrapper div {
+    padding: 3rem 2rem !important;
+  }
+  body.page-careers .grid-wrapper div span {
+    margin-bottom: 0 !important;
+  }
+  body.page-careers .grid-wrapper div p {
+    margin-block: 1rem 2rem !important;
+  }
+  body.page-careers .grid-wrapper div button {
+    padding: 1.75rem 3rem !important;
+    font-size: 1.5rem;
+  }
+  body.page-careers .grid-wrapper div br {
+    display: none;
+  }
 }
 body.page-contact header {
   min-height: auto;
@@ -1240,16 +1344,22 @@ body.page-contact main .contact .section-content form {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-block: 3.75rem;
+  padding-block: 1.75rem;
   max-width: 47rem;
   justify-content: flex-start;
 }
-body.page-contact main .contact .section-content form div {
-  display: flex;
+body.page-contact main .contact .section-content form .form-info {
   gap: 2.5rem;
 }
+body.page-contact main .contact .section-content form .form-info div {
+  flex: 100%;
+  flex-direction: column;
+}
+body.page-contact main .contact .section-content form div {
+  display: flex;
+}
 body.page-contact main .contact .section-content form div * {
-  flex: 50%;
+  flex: 100%;
 }
 body.page-contact main .contact .section-content form div label {
   font-weight: 300;
@@ -1287,4 +1397,29 @@ body.page-contact main .contact .section-content form div input[type=submit] {
 }
 body.page-contact main .contact .section-img {
   flex: 50%;
+}
+@media screen and (width <= 1000px) {
+  body.page-contact main {
+    padding-block: 1rem 2rem !important;
+  }
+  body.page-contact main .grid-container {
+    row-gap: 3rem;
+  }
+  body.page-contact main .grid-container .contact {
+    flex-direction: column;
+  }
+  body.page-contact main .grid-container .contact .section-content {
+    margin-bottom: 2rem !important;
+  }
+  body.page-contact main .grid-container .contact .section-content form {
+    max-width: 100%;
+  }
+}
+@media screen and (width <= 600px) {
+  body.page-contact main .contact .section-content form .form-info {
+    flex-direction: column;
+  }
+  body.page-contact main .contact .section-content form input {
+    padding-left: 0 !important;
+  }
 }/*# sourceMappingURL=style.css.map */
