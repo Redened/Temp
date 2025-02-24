@@ -232,15 +232,10 @@ summary,
   display: none !important;
 }
 
-/* @font-face {
-    font-family: Roboto;
-    src: url(font/Roboto-VariableFont_wdth\,wght.ttf);
-} */
 html {
   font-family: "Roboto", serif;
 }
-
-body {
+html body {
   background-color: #f7f7f7;
 }
 
@@ -268,10 +263,6 @@ header .container {
 header .container .nav {
   display: flex;
   justify-content: space-between;
-}
-header .container .nav .marker {
-  position: absolute;
-  top: 0;
 }
 header .container .nav .logo {
   padding: 1.2rem 2.8rem 0.65rem;
@@ -1091,13 +1082,13 @@ footer .container .m-return-to-marker {
   button a {
     font-size: 1.4rem !important;
   }
-  footer .info span.title {
+  footer .info .title {
     font-size: 1.8rem !important;
   }
   footer .info span {
     font-size: 1.4rem !important;
   }
-  footer .info .copyright {
+  .copyright {
     font-size: 1.2rem !important;
   }
   .company span.signature-name {
@@ -1225,6 +1216,80 @@ body.page-about header .nav-list li:has(a[href="about.html"]) {
 body.page-about header .nav-list li:has(a[href="about.html"]) a {
   color: black;
 }
+body.page-about main .grid-container {
+  row-gap: 4rem;
+}
+body.page-about main .grid-container .about-img {
+  margin-bottom: 3rem;
+}
+body.page-about main .grid-container .about-content {
+  max-width: 97.5rem;
+  margin-bottom: 8rem;
+  justify-content: space-between;
+}
+body.page-about main .grid-container .about-content .section-content:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body.page-about main .grid-container .about-content .section-content:nth-of-type(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+body.page-about main .grid-container .about-content .section-content:nth-of-type(2) div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+body.page-about main .grid-container .about-content .section-content:nth-of-type(2) span {
+  color: black;
+}
+body.page-about main .grid-container .heading-section .section-content {
+  flex: 41%;
+}
+body.page-about main .grid-container .heading-section .section-content span {
+  color: black;
+}
+body.page-about main .grid-container .heading-section .section-img {
+  flex: 59%;
+}
+@media screen and (width <= 1200px) {
+  body.page-about .heading-section {
+    flex-direction: column !important;
+  }
+  body.page-about .heading-section .section-content {
+    flex: 100% !important;
+    margin-bottom: 5rem;
+  }
+  body.page-about .heading-section h2 br {
+    display: none;
+  }
+  body.page-about .heading-section p {
+    width: 100% !important;
+  }
+}
+@media screen and (width <= 800px) {
+  body.page-about main {
+    padding-block: 1rem 2rem !important;
+  }
+  body.page-about main .grid-container {
+    row-gap: 2rem !important;
+  }
+  body.page-about main .about-img {
+    margin-bottom: 0rem !important;
+  }
+  body.page-about main .about-content {
+    flex-direction: column !important;
+    margin-bottom: 0rem !important;
+  }
+  body.page-about main .about-content div {
+    gap: 0.5rem !important;
+  }
+  body.page-about main .about-content p {
+    width: 100% !important;
+  }
+}
 body.page-careers header {
   min-height: auto;
 }
@@ -1270,6 +1335,9 @@ body.page-careers main .grid-wrapper div:has(*) button {
   font-weight: 300;
   white-space: nowrap;
   transition: color 0.4s, background-color 0.4s, border 0.4s;
+}
+body.page-careers main .grid-wrapper div:has(*) button a {
+  color: black;
 }
 body.page-careers main .grid-wrapper div:has(*) button:hover {
   color: black;
@@ -1319,7 +1387,7 @@ body.page-careers main .grid-wrapper div:has(*) button:hover {
   }
   body.page-careers .grid-wrapper div button {
     padding: 1.75rem 3rem !important;
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
   body.page-careers .grid-wrapper div br {
     display: none;
@@ -1406,10 +1474,12 @@ body.page-contact main .contact .section-img {
     row-gap: 3rem;
   }
   body.page-contact main .grid-container .contact {
+    grid-column: fullwidth;
     flex-direction: column;
   }
   body.page-contact main .grid-container .contact .section-content {
     margin-bottom: 2rem !important;
+    padding-inline: 2rem;
   }
   body.page-contact main .grid-container .contact .section-content form {
     max-width: 100%;
@@ -1419,7 +1489,11 @@ body.page-contact main .contact .section-img {
   body.page-contact main .contact .section-content form .form-info {
     flex-direction: column;
   }
-  body.page-contact main .contact .section-content form input {
+  body.page-contact main .contact .section-content form input:not(input[type=submit]) {
     padding-left: 0 !important;
+  }
+  body.page-contact main .contact .section-content form input[type=submit] {
+    font-size: 1.5rem !important;
+    max-width: 100% !important;
   }
 }/*# sourceMappingURL=style.css.map */

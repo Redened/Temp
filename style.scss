@@ -1,20 +1,14 @@
 @import "scss/normalise";
 @import "scss/boilerplate";
 
-//? Downloaded font import
-/* @font-face {
-    font-family: Roboto;
-    src: url(font/Roboto-VariableFont_wdth\,wght.ttf);
-} */
-
 //! /////////////////////////// MAIN STYLING
 
 html {
     font-family: "Roboto", serif;
-}
 
-body {
-    background-color: #f7f7f7;
+    body {
+        background-color: #f7f7f7;
+    }
 }
 
 header {
@@ -41,11 +35,6 @@ header {
         .nav {
             display: flex;
             justify-content: space-between;
-
-            .marker {
-                position: absolute;
-                top: 0;
-            }
 
             .logo {
                 padding: 1.2rem 2.8rem 0.65rem;
@@ -637,38 +626,47 @@ main {
                             width: 100%;
                             max-width: 10rem;
                         }
+
                         img[src="img/client2.png"] {
                             width: 100%;
                             max-width: 13rem;
                         }
+
                         img[src="img/client3.png"] {
                             width: 100%;
                             max-width: 10.5rem;
                         }
+
                         img[src="img/client4.png"] {
                             width: 100%;
                             max-width: 13.5rem;
                         }
+
                         img[src="img/client5.png"] {
                             width: 100%;
                             max-width: 13rem;
                         }
+
                         img[src="img/client6.png"] {
                             width: 100%;
                             max-width: 13.5rem;
                         }
+
                         img[src="img/client7.png"] {
                             width: 100%;
                             max-width: 15rem;
                         }
+
                         img[src="img/client8.png"] {
                             width: 100%;
                             max-width: 15rem;
                         }
+
                         img[src="img/client9.png"] {
                             width: 100%;
                             max-width: 16rem;
                         }
+
                         img[src="img/client10.png"] {
                             width: 100%;
                             max-width: 16.5rem;
@@ -788,7 +786,7 @@ footer {
 
 //! /////////////////////////// MEDIA QUERIES
 
-@media screen and (width <= 1520px) {
+@media screen and (width <=1520px) {
     .container {
         width: calc(100% - 4rem) !important;
     }
@@ -824,7 +822,7 @@ footer {
     }
 }
 
-@media screen and (width <= 1200px) {
+@media screen and (width <=1200px) {
     header {
         .container .nav .nav-list {
             ul,
@@ -847,6 +845,7 @@ footer {
                     padding-inline: 5rem;
                     flex: 30%;
                 }
+
                 .section-img {
                     flex: 70%;
                 }
@@ -867,7 +866,7 @@ footer {
     }
 }
 
-@media screen and (width <= 900px) {
+@media screen and (width <=900px) {
     header {
         .intro {
             padding: 0 !important;
@@ -962,7 +961,7 @@ footer {
     }
 }
 
-@media screen and (width <= 900px) and (height > 600px) {
+@media screen and (width <=900px) and (height > 600px) {
     header {
         .intro {
             padding: 6rem 0 0 0 !important;
@@ -970,7 +969,7 @@ footer {
     }
 }
 
-@media screen and (width <= 900px) and (height > 700px) {
+@media screen and (width <=900px) and (height > 700px) {
     header {
         .intro {
             padding: 12rem 0 0 0 !important;
@@ -978,7 +977,7 @@ footer {
     }
 }
 
-@media screen and (width <= 700px) {
+@media screen and (width <=700px) {
     main .grid-container {
         section.services .grid-wrapper {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -1000,6 +999,7 @@ footer {
                     .number {
                         margin-bottom: 0.75rem;
                     }
+
                     .number-of {
                         margin-bottom: 1.75rem;
                     }
@@ -1009,7 +1009,7 @@ footer {
     }
 }
 
-@media screen and (width <= 600px) {
+@media screen and (width <=600px) {
     header {
         .intro {
             h2 {
@@ -1126,18 +1126,20 @@ footer {
         font-size: 1.4rem !important;
     }
 
-    footer .info {
-        span.title {
-            font-size: 1.8rem !important;
-        }
+    footer {
+        .info {
+            .title {
+                font-size: 1.8rem !important;
+            }
 
-        span {
-            font-size: 1.4rem !important;
+            span {
+                font-size: 1.4rem !important;
+            }
         }
+    }
 
-        .copyright {
-            font-size: 1.2rem !important;
-        }
+    .copyright {
+        font-size: 1.2rem !important;
     }
 
     .company {
@@ -1214,7 +1216,7 @@ body {
             }
         }
 
-        @media screen and (width <= 900px) {
+        @media screen and (width <=900px) {
             main {
                 padding-block: 1rem 2rem !important;
 
@@ -1277,7 +1279,7 @@ body {
             }
         }
 
-        @media screen and (width <= 800px) {
+        @media screen and (width <=800px) {
             main {
                 padding-block: 1rem 6rem !important;
 
@@ -1312,6 +1314,104 @@ body {
 
                 a {
                     color: black;
+                }
+            }
+        }
+
+        main {
+            .grid-container {
+                row-gap: 4rem;
+
+                .about-img {
+                    margin-bottom: 3rem;
+                }
+
+                .about-content {
+                    max-width: 97.5rem;
+                    margin-bottom: 8rem;
+                    justify-content: space-between;
+
+                    .section-content:nth-of-type(1) {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+
+                    .section-content:nth-of-type(2) {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2rem;
+
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1.5rem;
+                        }
+
+                        span {
+                            color: black;
+                        }
+                    }
+                }
+
+                .heading-section {
+                    .section-content {
+                        flex: 41%;
+
+                        span {
+                            color: black;
+                        }
+                    }
+
+                    .section-img {
+                        flex: 59%;
+                    }
+                }
+            }
+        }
+
+        @media screen and (width <= 1200px) {
+            .heading-section {
+                flex-direction: column !important;
+
+                .section-content {
+                    flex: 100% !important;
+                    margin-bottom: 5rem;
+                }
+
+                h2 br {
+                    display: none;
+                }
+
+                p {
+                    width: 100% !important;
+                }
+            }
+        }
+
+        @media screen and (width <= 800px) {
+            main {
+                padding-block: 1rem 2rem !important;
+
+                .grid-container {
+                    row-gap: 2rem !important;
+                }
+                
+                .about-img {
+                    margin-bottom: 0rem !important;
+                }
+
+                .about-content {
+                    flex-direction: column !important;
+                    margin-bottom: 0rem !important;
+
+                    div {
+                        gap: 0.5rem !important;
+                    }
+
+                    p {
+                        width: 100% !important;
+                    }
                 }
             }
         }
@@ -1372,6 +1472,10 @@ body {
                         white-space: nowrap;
                         transition: color 0.4s, background-color 0.4s, border 0.4s;
 
+                        a {
+                            color: black;
+                        }
+
                         &:hover {
                             color: black;
                             border: 1px solid black;
@@ -1381,7 +1485,7 @@ body {
             }
         }
 
-        @media screen and (width <= 1520px) {
+        @media screen and (width <=1520px) {
             .grid-wrapper {
                 grid-template-columns: repeat(3, 1fr) !important;
 
@@ -1391,7 +1495,7 @@ body {
             }
         }
 
-        @media screen and (width <= 1200px) {
+        @media screen and (width <=1200px) {
             .grid-wrapper {
                 div {
                     padding: 4rem !important;
@@ -1399,13 +1503,13 @@ body {
             }
         }
 
-        @media screen and (width <= 1000px) {
+        @media screen and (width <=1000px) {
             .grid-wrapper {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
         }
 
-        @media screen and (width <= 900px) {
+        @media screen and (width <=900px) {
             main {
                 padding-block: 1rem 2rem !important;
 
@@ -1415,7 +1519,7 @@ body {
             }
         }
 
-        @media screen and (width <= 600px) {
+        @media screen and (width <=600px) {
             .grid-container section:has(.grid-wrapper) {
                 grid-column: fullwidth !important;
             }
@@ -1436,7 +1540,7 @@ body {
 
                     button {
                         padding: 1.75rem 3rem !important;
-                        font-size: 1.5rem;
+                        font-size: 1.5rem !important;
                     }
 
                     br {
@@ -1543,7 +1647,7 @@ body {
             }
         }
 
-        @media screen and (width <= 1000px) {
+        @media screen and (width <=1000px) {
             main {
                 padding-block: 1rem 2rem !important;
 
@@ -1551,10 +1655,12 @@ body {
                     row-gap: 3rem;
 
                     .contact {
+                        grid-column: fullwidth;
                         flex-direction: column;
 
                         .section-content {
                             margin-bottom: 2rem !important;
+                            padding-inline: 2rem;
 
                             form {
                                 max-width: 100%;
@@ -1565,24 +1671,23 @@ body {
             }
         }
 
-        @media screen and (width <= 600px) {
+        @media screen and (width <=600px) {
             main .contact .section-content {
                 form {
                     .form-info {
                         flex-direction: column;
                     }
 
-                    input {
-                        padding-left: 0 !important  ;
+                    input:not(input[type="submit"]) {
+                        padding-left: 0 !important;
+                    }
+
+                    input[type="submit"] {
+                        font-size: 1.5rem !important;
+                        max-width: 100% !important;
                     }
                 }
             }
         }
     }
-}
-
-//! CAREERS APPLICATION APPLY NOW BUTTON JAVASCRIPT
-
-* {
-    // outline: 1px solid red !important;
 }
