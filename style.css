@@ -242,8 +242,13 @@ html body {
 header {
   position: relative;
   padding-block: 3.5rem;
-  min-height: 100vh;
+  min-height: 100svh;
   color: white;
+}
+header #marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
 }
 header video {
   position: absolute;
@@ -336,21 +341,21 @@ header .container .nav .nav-list svg {
   cursor: pointer;
 }
 header .container .mobile-nav {
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  background-color: #f7f7f7;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 4rem;
+  background-color: #f7f7f7;
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(-4rem);
+  transition: opacity 0.4s ease-in, transform 0.4s ease-in;
 }
-header .container .mobile-nav .mobile-nav-close {
-  position: absolute;
-  right: 2rem;
-  top: 4.55rem;
-  stroke: black;
-  width: 5rem;
+header .container .mobile-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 header .container .mobile-nav ul {
   display: flex;
@@ -383,6 +388,39 @@ header .container .mobile-nav button:hover {
 }
 header .container .mobile-nav button:hover a {
   color: #fd5521;
+}
+header .container .mobile-nav-close {
+  position: absolute;
+  right: 2rem;
+  top: 3rem;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  z-index: 5;
+}
+header .container .mobile-nav-close span:nth-of-type(1) {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  transform: rotate(45deg);
+  width: 4.5rem;
+  height: 4px;
+  background-color: #fd5521;
+  border-radius: 5px;
+}
+header .container .mobile-nav-close span:nth-of-type(2) {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  transform: rotate(-45deg);
+  width: 4.5rem;
+  height: 4px;
+  background-color: #fd5521;
+  border-radius: 5px;
 }
 header .container .intro {
   padding: 10.75rem 0 0 5.7rem;
@@ -858,246 +896,26 @@ footer .container .m-return-to-marker {
   width: 4.75rem;
   height: 4.75rem;
   position: fixed;
-  bottom: 15rem;
+  bottom: 20rem;
   right: 2rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+footer .container .m-return-to-marker.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+footer .container .m-return-to-marker.fade-out {
+  opacity: 0;
+}
+footer .container .m-return-to-marker svg [data-color="1"] {
+  fill: #fd5521;
+}
+footer .container .m-return-to-marker svg [data-color="2"] {
+  fill: #000000;
 }
 
-@media screen and (width <= 1520px) {
-  .container {
-    width: calc(100% - 4rem) !important;
-  }
-  main .grid-container {
-    grid-template-columns: [fullwidth-start] 2rem [container-start] 1fr [container-end] 2rem [fullwidth-end];
-  }
-  main .grid-container section.projects .grid-wrapper {
-    grid-template-columns: 1fr 1fr 1fr !important;
-  }
-  main .grid-container section.services .grid-wrapper {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-  main .grid-container section.services .grid-wrapper div:not(:has(*)) {
-    display: none;
-  }
-  footer .copyright {
-    left: 2rem !important;
-  }
-  footer .return-to-marker {
-    right: 2rem !important;
-  }
-}
-@media screen and (width <= 1200px) {
-  header .container .nav .nav-list ul,
-  header .container .nav .nav-list button {
-    display: none;
-  }
-  header .container .nav .nav-list svg {
-    display: inline-block;
-  }
-  main .grid-container section.commercial .section-content, main .grid-container section.infrastructure .section-content, main .grid-container section.residental .section-content {
-    padding-inline: 5rem;
-    flex: 30%;
-  }
-  main .grid-container section.commercial .section-img, main .grid-container section.infrastructure .section-img, main .grid-container section.residental .section-img {
-    flex: 70%;
-  }
-  main .grid-container section.projects .grid-wrapper div {
-    height: 100% !important;
-  }
-  footer .logo {
-    margin-right: 0 !important;
-  }
-}
-@media screen and (width <= 900px) {
-  header .intro {
-    padding: 0 !important;
-  }
-  main {
-    padding-block: 5rem;
-  }
-  main .grid-container {
-    row-gap: 5rem;
-  }
-  main .grid-container .heading-section:not(.clients) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  main .grid-container .heading-section:not(.clients) button {
-    margin-top: 2rem;
-  }
-  main .grid-container section.commercial {
-    flex-direction: column-reverse;
-  }
-  main .grid-container section.infrastructure, main .grid-container section.residental {
-    flex-direction: column;
-  }
-  main .grid-container section.commercial, main .grid-container section.infrastructure, main .grid-container section.residental {
-    grid-column: fullwidth;
-  }
-  main .grid-container section.commercial .section-content, main .grid-container section.infrastructure .section-content, main .grid-container section.residental .section-content {
-    padding-inline: 2rem;
-    margin-top: 5rem;
-  }
-  main .grid-container section.commercial .section-content p, main .grid-container section.infrastructure .section-content p, main .grid-container section.residental .section-content p {
-    width: 100%;
-  }
-  main .grid-container section.commercial .section-img img, main .grid-container section.infrastructure .section-img img, main .grid-container section.residental .section-img img {
-    height: 60vh;
-  }
-  main .grid-container section.services .grid-wrapper {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-  main .grid-container section.clients .grid-wrapper {
-    gap: 3rem !important;
-  }
-  footer .container {
-    padding: 3rem 0 7.5rem;
-    flex-direction: column;
-    gap: 3rem;
-  }
-  footer .container .logo {
-    text-align: left;
-  }
-  footer .container .info .title {
-    margin-bottom: 1rem;
-  }
-  footer .container .info.address span:nth-of-type(2) {
-    margin-bottom: 1rem;
-  }
-  footer .container button {
-    place-self: flex-start;
-  }
-  footer .container .copyright {
-    width: 25ch;
-    bottom: 2rem;
-    left: 0 !important;
-  }
-}
-@media screen and (width <= 900px) and (height > 600px) {
-  header .intro {
-    padding: 6rem 0 0 0 !important;
-  }
-}
-@media screen and (width <= 900px) and (height > 700px) {
-  header .intro {
-    padding: 12rem 0 0 0 !important;
-  }
-}
-@media screen and (width <= 700px) {
-  main .grid-container section.services .grid-wrapper {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  main .grid-container section.company {
-    padding-block: 5rem;
-  }
-  main .grid-container section.company p {
-    margin-bottom: 3rem !important;
-  }
-  main .grid-container section.company .numbers {
-    flex-direction: column;
-    gap: 2.5rem !important;
-    margin-bottom: 3rem !important;
-  }
-  main .grid-container section.company .numbers div .number {
-    margin-bottom: 0.75rem;
-  }
-  main .grid-container section.company .numbers div .number-of {
-    margin-bottom: 1.75rem;
-  }
-}
-@media screen and (width <= 600px) {
-  header .intro h2 {
-    max-width: 25ch;
-    margin-bottom: 2rem !important;
-  }
-  header .intro div {
-    display: flex;
-    justify-content: space-around;
-  }
-  header .intro div button {
-    flex: 50%;
-  }
-  header .intro div button a {
-    padding: 2rem 0 !important;
-    width: 100%;
-  }
-  main .grid-container .heading-section .heading-section-content {
-    gap: 1rem !important;
-  }
-  main .grid-container .heading-section .heading-section-content br {
-    display: none;
-  }
-  main .grid-container .heading-section button a {
-    padding: 1.5rem 3.5rem !important;
-  }
-  main .grid-container .section-content h3 {
-    margin-bottom: 2.5rem !important;
-  }
-  main .grid-container section.services {
-    grid-column: fullwidth;
-  }
-  main .grid-container section.services .grid-wrapper {
-    grid-template-columns: 1fr !important;
-    grid-auto-rows: 1fr !important;
-  }
-  main .grid-container section.services .grid-wrapper > div {
-    padding: 2rem;
-    gap: 1rem !important;
-  }
-  main .grid-container section.services .grid-wrapper span br {
-    display: none;
-  }
-  main .grid-container section.projects {
-    grid-column: fullwidth !important;
-  }
-  main .grid-container section.clients h2 {
-    max-width: 16ch !important;
-    margin-bottom: 4rem !important;
-  }
-  main .grid-container section.clients h2 br {
-    display: none !important;
-  }
-  main .grid-container section.clients span {
-    margin-bottom: 1rem !important;
-  }
-  main .grid-container section.clients .grid-wrapper {
-    gap: 2rem !important;
-  }
-  footer .container button a {
-    padding: 1.65rem 3rem;
-  }
-  footer .container .return-to-marker {
-    display: none;
-  }
-  footer .container .m-return-to-marker {
-    display: block;
-  }
-  main .grid-container section .section-content > * {
-    position: static !important;
-  }
-  p {
-    width: 100% !important;
-    font-size: 1.4rem !important;
-  }
-  button,
-  button a {
-    font-size: 1.4rem !important;
-  }
-  footer .info .title {
-    font-size: 1.8rem !important;
-  }
-  footer .info span {
-    font-size: 1.4rem !important;
-  }
-  .copyright {
-    font-size: 1.2rem !important;
-  }
-  .company span.signature-name {
-    font-size: 1.8rem !important;
-  }
-  .company span.signature-title {
-    font-size: 1.4rem !important;
-  }
-}
 body.page-services header {
   min-height: auto;
 }
@@ -1495,5 +1313,245 @@ body.page-contact main .contact .section-img {
   body.page-contact main .contact .section-content form input[type=submit] {
     font-size: 1.5rem !important;
     max-width: 100% !important;
+  }
+}
+
+@media screen and (width <= 1520px) {
+  body .container {
+    width: calc(100% - 4rem) !important;
+  }
+  body main .grid-container {
+    grid-template-columns: [fullwidth-start] 2rem [container-start] 1fr [container-end] 2rem [fullwidth-end];
+  }
+  body main .grid-container section.projects .grid-wrapper {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+  body main .grid-container section.services .grid-wrapper {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  body main .grid-container section.services .grid-wrapper div:not(:has(*)) {
+    display: none;
+  }
+  body footer .copyright {
+    left: 2rem !important;
+  }
+  body footer .return-to-marker {
+    right: 2rem !important;
+  }
+}
+@media screen and (width <= 1200px) {
+  body header .container .nav .nav-list ul,
+  body header .container .nav .nav-list button {
+    display: none;
+  }
+  body header .container .nav .nav-list svg {
+    display: inline-block;
+  }
+  body main .grid-container section.commercial .section-content, body main .grid-container section.infrastructure .section-content, body main .grid-container section.residental .section-content {
+    padding-inline: 5rem;
+    flex: 30%;
+  }
+  body main .grid-container section.commercial .section-img, body main .grid-container section.infrastructure .section-img, body main .grid-container section.residental .section-img {
+    flex: 70%;
+  }
+  body main .grid-container section.projects .grid-wrapper div {
+    height: 100% !important;
+  }
+  body footer .logo {
+    margin-right: 0 !important;
+  }
+}
+@media screen and (width <= 900px) {
+  body header .intro {
+    padding: 0 !important;
+  }
+  body main {
+    padding-block: 5rem;
+  }
+  body main .grid-container {
+    row-gap: 5rem;
+  }
+  body main .grid-container .heading-section:not(.clients) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  body main .grid-container .heading-section:not(.clients) button {
+    margin-top: 2rem;
+  }
+  body main .grid-container section.commercial {
+    flex-direction: column-reverse;
+  }
+  body main .grid-container section.infrastructure, body main .grid-container section.residental {
+    flex-direction: column;
+  }
+  body main .grid-container section.commercial, body main .grid-container section.infrastructure, body main .grid-container section.residental {
+    grid-column: fullwidth;
+  }
+  body main .grid-container section.commercial .section-content, body main .grid-container section.infrastructure .section-content, body main .grid-container section.residental .section-content {
+    padding-inline: 2rem;
+    margin-top: 5rem;
+  }
+  body main .grid-container section.commercial .section-content p, body main .grid-container section.infrastructure .section-content p, body main .grid-container section.residental .section-content p {
+    width: 100%;
+  }
+  body main .grid-container section.commercial .section-img img, body main .grid-container section.infrastructure .section-img img, body main .grid-container section.residental .section-img img {
+    height: 60vh;
+  }
+  body main .grid-container section.services .grid-wrapper {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  body main .grid-container section.clients .grid-wrapper {
+    gap: 3rem !important;
+  }
+  body footer .container {
+    padding: 3rem 0 7.5rem;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  body footer .container .logo {
+    text-align: left;
+  }
+  body footer .container .info .title {
+    margin-bottom: 1rem;
+  }
+  body footer .container .info.address span:nth-of-type(2) {
+    margin-bottom: 1rem;
+  }
+  body footer .container button {
+    place-self: flex-start;
+  }
+  body footer .container .copyright {
+    width: 25ch;
+    bottom: 2rem;
+    left: 0 !important;
+  }
+}
+@media screen and (width <= 900px) and (height > 600px) {
+  body header .intro {
+    padding: 6rem 0 0 0 !important;
+  }
+}
+@media screen and (width <= 900px) and (height > 700px) {
+  body header .intro {
+    padding: 12rem 0 0 0 !important;
+  }
+}
+@media screen and (width <= 700px) {
+  body main .grid-container section.services .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  body main .grid-container section.company {
+    padding-block: 5rem;
+  }
+  body main .grid-container section.company p {
+    margin-bottom: 3rem !important;
+  }
+  body main .grid-container section.company .numbers {
+    flex-direction: column;
+    gap: 2.5rem !important;
+    margin-bottom: 3rem !important;
+  }
+  body main .grid-container section.company .numbers div .number {
+    margin-bottom: 0.75rem;
+  }
+  body main .grid-container section.company .numbers div .number-of {
+    margin-bottom: 1.75rem;
+  }
+}
+@media screen and (width <= 600px) {
+  body header {
+    padding-top: 2rem !important;
+  }
+  body header .intro h2 {
+    max-width: 25ch;
+    margin-bottom: 2rem !important;
+  }
+  body header .intro div {
+    display: flex;
+    justify-content: space-around;
+  }
+  body header .intro div button {
+    flex: 50%;
+  }
+  body header .intro div button a {
+    padding: 2rem 0 !important;
+    width: 100%;
+  }
+  body main .grid-container .heading-section .heading-section-content {
+    gap: 1rem !important;
+  }
+  body main .grid-container .heading-section .heading-section-content br {
+    display: none;
+  }
+  body main .grid-container .heading-section button a {
+    padding: 1.5rem 3.5rem !important;
+  }
+  body main .grid-container .section-content h3 {
+    margin-bottom: 2.5rem !important;
+  }
+  body main .grid-container section.services {
+    grid-column: fullwidth;
+  }
+  body main .grid-container section.services .grid-wrapper {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 1fr !important;
+  }
+  body main .grid-container section.services .grid-wrapper > div {
+    padding: 2rem;
+    gap: 1rem !important;
+  }
+  body main .grid-container section.services .grid-wrapper span br {
+    display: none;
+  }
+  body main .grid-container section.projects {
+    grid-column: fullwidth !important;
+  }
+  body main .grid-container section.clients h2 {
+    max-width: 16ch !important;
+    margin-bottom: 4rem !important;
+  }
+  body main .grid-container section.clients h2 br {
+    display: none !important;
+  }
+  body main .grid-container section.clients span {
+    margin-bottom: 1rem !important;
+  }
+  body main .grid-container section.clients .grid-wrapper {
+    gap: 2rem !important;
+  }
+  body footer .container button a {
+    padding: 1.65rem 3rem;
+  }
+  body footer .container .return-to-marker {
+    display: none;
+  }
+  body footer .container .m-return-to-marker {
+    display: block;
+  }
+  body main .grid-container section .section-content > * {
+    position: static !important;
+  }
+  body p {
+    width: 100% !important;
+    font-size: 1.4rem !important;
+  }
+  body button,
+  body button a {
+    font-size: 1.4rem !important;
+  }
+  body footer .info .title {
+    font-size: 1.8rem !important;
+  }
+  body footer .info span {
+    font-size: 1.4rem !important;
+  }
+  body .copyright {
+    font-size: 1.2rem !important;
+  }
+  body .company span.signature-name {
+    font-size: 1.8rem !important;
+  }
+  body .company span.signature-title {
+    font-size: 1.4rem !important;
   }
 }/*# sourceMappingURL=style.css.map */

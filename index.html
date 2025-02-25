@@ -18,13 +18,16 @@
         <link rel="stylesheet" href="style.css" />
         <script defer src="js/script.js"></script>
     </head>
+
     <body class="page-main">
         <header>
+            <div id="marker"></div>
+
             <video src="video/file.mp4" autoplay loop></video>
 
             <div class="container">
                 <div class="nav">
-                    <div class="logo" id="logo">
+                    <div class="logo">
                         <a href="index.html">MCR</a>
                         <br />
                         <a href="index.html">Construction</a>
@@ -42,8 +45,6 @@
                         <button><a href="tel:+">Call Now!</a></button>
 
                         <svg class="mobile-nav-open" id="mNavOpen" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <link xmlns="" type="text/css" id="dark-mode" rel="stylesheet" href="" />
-                            <style xmlns="" type="text/css" id="dark-mode-custom-style" />
                             <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round" />
                             <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round" />
                             <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round" />
@@ -52,14 +53,6 @@
                 </div>
 
                 <div class="mobile-nav hidden" id="mNav">
-                    <svg class="mobile-nav-close" id="mNavClose" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <link xmlns="" type="text/css" id="dark-mode" rel="stylesheet" href="" />
-                        <style xmlns="" type="text/css" id="dark-mode-custom-style" />
-                        <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round" />
-                        <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round" />
-                        <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-
                     <ul>
                         <li><a href="html/services.html">Services</a></li>
                         <li><a href="html/projects.html">Projects</a></li>
@@ -69,6 +62,11 @@
                     </ul>
 
                     <button><a href="tel:+">Call Now!</a></button>
+                </div>
+
+                <div class="mobile-nav-close hidden" id="mNavClose">
+                    <span></span>
+                    <span></span>
                 </div>
 
                 <div class="intro">
@@ -555,8 +553,9 @@
 
                 <span class="copyright">© 2035 by MCR Construction. Powered and secured by <u>Wix</u> </span>
 
-                <a class="return-to-marker" href="#logo">Go Up</a>
-                <div class="m-return-to-marker">
+                <a class="return-to-marker" href="#marker">Go Up</a>
+
+                <a class="m-return-to-marker" href="#marker">
                     <svg
                         preserveAspectRatio="xMidYMid meet"
                         data-bbox="20 20 160 160"
@@ -567,16 +566,6 @@
                         data-type="color"
                         role="presentation"
                         aria-hidden="true">
-                        <defs>
-                            <style>
-                                .m-return-to-marker svg [data-color="1"] {
-                                    fill: #fd5521;
-                                }
-                                .m-return-to-marker svg [data-color="2"] {
-                                    fill: #000000;
-                                }
-                            </style>
-                        </defs>
                         <g fill-rule="evenodd">
                             <path fill-rule="nonzero" fill="#FFFFFF" d="M180 20v160H20V20h160z" data-color="1"></path>
                             <path fill-rule="nonzero" fill="#A2A3E9" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z" data-color="2"></path>
@@ -586,7 +575,7 @@
                                 data-color="2"></path>
                         </g>
                     </svg>
-                </div>
+                </a>
             </div>
         </footer>
     </body>

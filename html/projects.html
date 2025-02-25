@@ -9,7 +9,7 @@
         <!-- <meta name='description' content='' /> -->
         <!-- <meta name='author' content='' /> -->
         <!-- <link rel='icon' type='image/x-icon' href='' /> -->
-         
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
@@ -18,8 +18,11 @@
         <link rel="stylesheet" href="../style.css" />
         <script defer src="../js/script.js"></script>
     </head>
+
     <body class="page-projects">
         <header>
+            <div id="marker"></div>
+            
             <div class="container">
                 <div class="nav">
                     <div class="logo" id="logo">
@@ -188,8 +191,9 @@
 
                 <span class="copyright">© 2035 by MCR Construction. Powered and secured by Wix</span>
 
-                <a class="return-to-marker" href="#logo">Go Up</a>
-                <div class="m-return-to-marker">
+                <a class="return-to-marker" href="#marker">Go Up</a>
+
+                <a class="m-return-to-marker" href="#marker">
                     <svg
                         preserveAspectRatio="xMidYMid meet"
                         data-bbox="20 20 160 160"
@@ -200,16 +204,6 @@
                         data-type="color"
                         role="presentation"
                         aria-hidden="true">
-                        <defs>
-                            <style>
-                                .m-return-to-marker svg [data-color="1"] {
-                                    fill: #fd5521;
-                                }
-                                .m-return-to-marker svg [data-color="2"] {
-                                    fill: #000000;
-                                }
-                            </style>
-                        </defs>
                         <g fill-rule="evenodd">
                             <path fill-rule="nonzero" fill="#FFFFFF" d="M180 20v160H20V20h160z" data-color="1"></path>
                             <path fill-rule="nonzero" fill="#A2A3E9" d="M24 24v152h152V24H24zm-4-4h160v160H20V20z" data-color="2"></path>
@@ -219,7 +213,7 @@
                                 data-color="2"></path>
                         </g>
                     </svg>
-                </div>
+                </a>
             </div>
         </footer>
     </body>
