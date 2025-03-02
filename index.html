@@ -44,11 +44,11 @@
 
                         <button><a href="tel:+">Call Now!</a></button>
 
-                        <svg class="mobile-nav-open" id="mNavOpen" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round" />
-                            <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round" />
-                            <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round" />
-                        </svg>
+                        <div class="mobile-nav-toggle" id="mNavToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
                 </div>
 
@@ -62,11 +62,6 @@
                     </ul>
 
                     <button><a href="tel:+">Call Now!</a></button>
-                </div>
-
-                <div class="mobile-nav-close hidden" id="mNavClose">
-                    <span></span>
-                    <span></span>
                 </div>
 
                 <div class="intro">
@@ -471,22 +466,60 @@
                 </section>
 
                 <section class="projects">
-                    <div class="grid-wrapper">
-                        <div>
-                            <span
-                                >West Ridge Hill <br />
-                                Interchange</span
-                            >
-                            <img src="img/project1.jpg" alt="" />
+                    <div class="overflow-layer">
+                        <div class="grid-wrapper">
+                            <div data-number="1">
+                                <span
+                                    >West Ridge Hill <br />
+                                    Interchange</span
+                                >
+                                <img src="img/project1.jpg" alt="" />
+                            </div>
+
+                            <div data-number="2">
+                                <span>Halston Parkway</span>
+                                <img src="img/project2.jpg" alt="" />
+                            </div>
+
+                            <div data-number="3">
+                                <span>Great Hill New Campus</span>
+                                <img src="img/project3.jpg" alt="" />
+                            </div>
+
+                            <div data-number="4">
+                                <span
+                                    >West Ridge Hill <br />
+                                    Interchange</span
+                                >
+                                <img src="img/project1.jpg" alt="" />
+                            </div>
+
+                            <div data-number="5">
+                                <span>Halston Parkway</span>
+                                <img src="img/project2.jpg" alt="" />
+                            </div>
+
+                            <div data-number="6">
+                                <span>Great Hill New Campus</span>
+                                <img src="img/project3.jpg" alt="" />
+                            </div>
                         </div>
-                        <div>
-                            <span>Halston Parkway</span>
-                            <img src="img/project2.jpg" alt="" />
-                        </div>
-                        <div>
-                            <span>Great Hill New Campus</span>
-                            <img src="img/project3.jpg" alt="" />
-                        </div>
+
+                        <button class="slider-back">
+                            <svg viewBox="0 0 23 39">
+                                <path
+                                    d="M857.005,231.479L858.5,230l18.124,18-18.127,18-1.49-1.48L873.638,248Z"
+                                    transform="translate(-855 -230)"></path>
+                            </svg>
+                        </button>
+
+                        <button class="slider-forward">
+                            <svg viewBox="0 0 23 39">
+                                <path
+                                    d="M857.005,231.479L858.5,230l18.124,18-18.127,18-1.49-1.48L873.638,248Z"
+                                    transform="translate(-855 -230)"></path>
+                            </svg>
+                        </button>
                     </div>
                 </section>
 

@@ -238,6 +238,9 @@ html {
 html body {
   background-color: #f7f7f7;
 }
+html body.overflow {
+  overflow: hidden;
+}
 
 header {
   position: relative;
@@ -289,6 +292,7 @@ header .container .nav .logo a:nth-of-type(2) {
 }
 header .container .nav .nav-list {
   display: flex;
+  align-items: center;
 }
 header .container .nav .nav-list ul {
   display: flex;
@@ -332,13 +336,50 @@ header .container .nav .nav-list button:hover {
 header .container .nav .nav-list button:hover a {
   color: #fd5521;
 }
-header .container .nav .nav-list svg {
+header .container .nav .nav-list .mobile-nav-toggle {
   display: none;
-  width: 5rem;
-  aspect-ratio: 1/1;
-  margin-left: 2.5rem;
-  stroke: #fd5521;
+  position: relative;
+  z-index: 10;
+  width: 3rem;
+  height: 2.5rem;
   cursor: pointer;
+}
+header .container .nav .nav-list .mobile-nav-toggle span {
+  display: block;
+  position: relative;
+  background-color: #fd5521;
+  width: 3rem;
+  height: 3px;
+  border-radius: 4px;
+  transition: all 0.5s, opacity 0.5s;
+}
+header .container .nav .nav-list .mobile-nav-toggle span:nth-of-type(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header .container .nav .nav-list .mobile-nav-toggle span:nth-of-type(2) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+}
+header .container .nav .nav-list .mobile-nav-toggle span:nth-of-type(3) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+header .container .nav .nav-list .mobile-nav-toggle.transform span:nth-of-type(1) {
+  transform: translateY(1.1rem) rotate(45deg);
+}
+header .container .nav .nav-list .mobile-nav-toggle.transform span:nth-of-type(2) {
+  opacity: 0;
+}
+header .container .nav .nav-list .mobile-nav-toggle.transform span:nth-of-type(3) {
+  transform: translateY(-1.1rem) rotate(-45deg);
 }
 header .container .mobile-nav {
   display: flex;
@@ -348,10 +389,11 @@ header .container .mobile-nav {
   background-color: #f7f7f7;
   position: fixed;
   inset: 0;
-  z-index: 3;
+  height: 110vh;
+  z-index: 9;
   opacity: 0;
-  transform: translateY(-4rem);
-  transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+  transform: translateY(-5rem);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 header .container .mobile-nav.visible {
   opacity: 1;
@@ -388,39 +430,6 @@ header .container .mobile-nav button:hover {
 }
 header .container .mobile-nav button:hover a {
   color: #fd5521;
-}
-header .container .mobile-nav-close {
-  position: absolute;
-  right: 2rem;
-  top: 3rem;
-  width: 5rem;
-  height: 5rem;
-  cursor: pointer;
-  z-index: 5;
-}
-header .container .mobile-nav-close span:nth-of-type(1) {
-  display: inline-block;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  transform: rotate(45deg);
-  width: 4.5rem;
-  height: 4px;
-  background-color: #fd5521;
-  border-radius: 5px;
-}
-header .container .mobile-nav-close span:nth-of-type(2) {
-  display: inline-block;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  transform: rotate(-45deg);
-  width: 4.5rem;
-  height: 4px;
-  background-color: #fd5521;
-  border-radius: 5px;
 }
 header .container .intro {
   padding: 10.75rem 0 0 5.7rem;
@@ -708,20 +717,38 @@ main .grid-container section.services .grid-wrapper div:has(*) span {
   line-height: 3rem;
   font-weight: 400;
 }
-main .grid-container section.projects .grid-wrapper {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 74rem 1fr;
-  gap: 1rem;
-}
-main .grid-container section.projects .grid-wrapper > div {
-  height: 58rem;
-  overflow: hidden;
+main .grid-container section.projects {
   position: relative;
 }
-main .grid-container section.projects .grid-wrapper > div span {
+main .grid-container section.projects .overflow-layer {
+  overflow-x: hidden;
+}
+main .grid-container section.projects .overflow-layer .grid-wrapper {
+  width: 200%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-auto-columns: 1fr 2fr;
+  grid-template-rows: 58rem;
+  grid-auto-flow: column;
+  gap: 1rem;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+main .grid-container section.projects .overflow-layer .grid-wrapper > div {
+  overflow: hidden;
+  position: relative;
+  height: 100% !important;
+}
+main .grid-container section.projects .overflow-layer .grid-wrapper > div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 1s ease-out;
+}
+main .grid-container section.projects .overflow-layer .grid-wrapper > div span {
   color: #f7f7f7;
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
   font-weight: 700;
   display: none;
   position: absolute;
@@ -730,19 +757,37 @@ main .grid-container section.projects .grid-wrapper > div span {
   place-self: center;
   text-align: center;
 }
-main .grid-container section.projects .grid-wrapper > div img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: transform 1s ease-out;
-}
-main .grid-container section.projects .grid-wrapper > div:hover img {
+main .grid-container section.projects .overflow-layer .grid-wrapper > div:hover img {
   transform: scale(1.1);
   filter: brightness(60%);
 }
-main .grid-container section.projects .grid-wrapper > div:hover span {
+main .grid-container section.projects .overflow-layer .grid-wrapper > div:hover span {
   display: inline;
+}
+main .grid-container section.projects .overflow-layer > button {
+  background-color: transparent;
+  border: none;
+  z-index: 2;
+}
+main .grid-container section.projects .overflow-layer > button.transitioning {
+  pointer-events: none;
+  opacity: 0.25;
+}
+main .grid-container section.projects .overflow-layer > button.slider-back {
+  position: absolute;
+  left: -4.5rem;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+}
+main .grid-container section.projects .overflow-layer > button.slider-forward {
+  position: absolute;
+  right: -4.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+main .grid-container section.projects .overflow-layer > button svg {
+  width: 20px;
+  height: 30px;
 }
 main .grid-container section.clients {
   flex-direction: column;
@@ -893,8 +938,8 @@ footer .container .return-to-marker {
 }
 footer .container .m-return-to-marker {
   display: none;
-  width: 4.75rem;
-  height: 4.75rem;
+  width: 4rem;
+  height: 4rem;
   position: fixed;
   bottom: 20rem;
   right: 2rem;
@@ -1323,8 +1368,23 @@ body.page-contact main .contact .section-img {
   body main .grid-container {
     grid-template-columns: [fullwidth-start] 2rem [container-start] 1fr [container-end] 2rem [fullwidth-end];
   }
-  body main .grid-container section.projects .grid-wrapper {
-    grid-template-columns: 1fr 1fr 1fr !important;
+  body main .grid-container section.projects .overflow-layer button svg {
+    stroke: #fd5521;
+    fill: #fd5521;
+    width: 30px;
+    height: 50px;
+  }
+  body main .grid-container section.projects .overflow-layer button.slider-back {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+  }
+  body main .grid-container section.projects .overflow-layer button.slider-forward {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
   body main .grid-container section.services .grid-wrapper {
     grid-template-columns: repeat(4, 1fr) !important;
@@ -1344,8 +1404,8 @@ body.page-contact main .contact .section-img {
   body header .container .nav .nav-list button {
     display: none;
   }
-  body header .container .nav .nav-list svg {
-    display: inline-block;
+  body header .container .nav .nav-list .mobile-nav-toggle {
+    display: flex;
   }
   body main .grid-container section.commercial .section-content, body main .grid-container section.infrastructure .section-content, body main .grid-container section.residental .section-content {
     padding-inline: 5rem;
@@ -1354,8 +1414,8 @@ body.page-contact main .contact .section-img {
   body main .grid-container section.commercial .section-img, body main .grid-container section.infrastructure .section-img, body main .grid-container section.residental .section-img {
     flex: 70%;
   }
-  body main .grid-container section.projects .grid-wrapper div {
-    height: 100% !important;
+  body main .grid-container section.projects .grid-wrapper {
+    grid-template-rows: auto !important;
   }
   body footer .logo {
     margin-right: 0 !important;
@@ -1402,6 +1462,9 @@ body.page-contact main .contact .section-img {
   }
   body main .grid-container section.clients .grid-wrapper {
     gap: 3rem !important;
+  }
+  body main .grid-container section.projects .grid-wrapper {
+    width: 202% !important;
   }
   body footer .container {
     padding: 3rem 0 7.5rem;
@@ -1505,6 +1568,20 @@ body.page-contact main .contact .section-img {
   }
   body main .grid-container section.projects {
     grid-column: fullwidth !important;
+  }
+  body main .grid-container section.projects .overflow-layer {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  body main .grid-container section.projects .overflow-layer::-webkit-scrollbar {
+    display: none;
+  }
+  body main .grid-container section.projects .overflow-layer .grid-wrapper {
+    gap: 0.5rem;
+  }
+  body main .grid-container section.projects .overflow-layer button {
+    display: none;
   }
   body main .grid-container section.clients h2 {
     max-width: 16ch !important;
