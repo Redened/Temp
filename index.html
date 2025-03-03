@@ -116,7 +116,7 @@
 
                 <section class="infrastructure">
                     <div class="section-img">
-                        <img src="img/infrastructure.jpg" alt="infrastructure" />
+                        <!-- <img src="img/infrastructure.jpg" alt="infrastructure" /> -->
                     </div>
                     <div class="section-content">
                         <div class="line"></div>
@@ -611,5 +611,90 @@
                 </a>
             </div>
         </footer>
+
+        <script>
+            const sliderContainer = document.querySelector(".overflow-layer");
+            const slider = document.querySelector(".overflow-layer .grid-wrapper");
+            const sliderChildren = document.querySelector(".overflow-layer .grid-wrapper > div");
+
+            const sliderBack = document.querySelector(".slider-back");
+            const sliderForward = document.querySelector(".slider-forward");
+
+            function updateVisibleElements() {
+                const parent = document.querySelector(".overflow-layer");
+                const children = document.querySelectorAll(".overflow-layer .grid-wrapper > div");
+                const parentRect = parent.getBoundingClientRect();
+
+                children.forEach((child) => {
+                    const childRect = child.getBoundingClientRect();
+
+                    if (childRect.left + 5 >= parentRect.left - 5 && childRect.right - 5 <= parentRect.right + 5) {
+                        child.classList.add("visible");
+                    } else {
+                        child.classList.remove("visible");
+                    }
+                });
+            }
+            window.addEventListener("load", updateVisibleElements);
+            window.addEventListener("resize", () => {
+                sliderContainer.scrollTo(0, 0);
+            });
+            slider.addEventListener("transitionend", updateVisibleElements);
+
+            sliderForward.addEventListener("click", () => {
+                let nextSlide = document.querySelector(".overflow-layer .grid-wrapper div.visible + div:not(.visible)");
+                let targetTranslateDistance = 10 + nextSlide.getBoundingClientRect().width;
+
+                let sliderTranslateValues = getComputedStyle(slider)
+                    .transform.match(/matrix.*\((.+)\)/)[1]
+                    .split(", ");
+                sliderTranslateXValue = parseFloat(sliderTranslateValues[4]);
+
+                let translateDistance = sliderTranslateXValue + -targetTranslateDistance;
+
+                slider.style.transform = `translateX(${translateDistance}px)`;
+            });
+
+            sliderForward.addEventListener("click", () => {
+                let nextSlide = document.querySelector(".overflow-layer .grid-wrapper div.visible + div:not(.visible)");
+
+                if (nextSlide == null) {
+                    slider.style.transform = "translateX(0px)";
+                } else {
+                    return;
+                }
+            });
+
+            sliderBack.addEventListener("click", () => {
+                let previousSlide = document.querySelector(".overflow-layer .grid-wrapper div:not(.visible):has(+ div.visible)");
+                let targetTranslateDistance = 10 + previousSlide.getBoundingClientRect().width;
+
+                let sliderTranslateValues = getComputedStyle(slider)
+                    .transform.match(/matrix.*\((.+)\)/)[1]
+                    .split(", ");
+
+                sliderTranslateXValue = parseFloat(sliderTranslateValues[4]);
+
+                let translateDistance = sliderTranslateXValue - -targetTranslateDistance;
+
+                slider.style.transform = `translateX(${translateDistance}px)`;
+            });
+
+            sliderForward.addEventListener("click", () => {
+                sliderForward.classList.add("transitioning");
+
+                slider.addEventListener("transitionend", () => {
+                    sliderForward.classList.remove("transitioning");
+                });
+            });
+
+            sliderBack.addEventListener("click", () => {
+                sliderBack.classList.add("transitioning");
+
+                slider.addEventListener("transitionend", () => {
+                    sliderBack.classList.remove("transitioning");
+                });
+            });
+        </script>
     </body>
 </html>

@@ -404,7 +404,7 @@ header .container .mobile-nav ul {
   align-items: center;
   flex-direction: column;
   gap: 4rem;
-  margin-top: 40%;
+  margin-top: 25vh;
 }
 header .container .mobile-nav ul li a {
   color: black;
@@ -617,6 +617,11 @@ main .grid-container section.infrastructure .section-content {
 }
 main .grid-container section.infrastructure .section-img {
   flex: 50%;
+  background: url("img/infrastructure.jpg");
+  background-position: 12% 40%;
+  background-size: 45%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 main .grid-container section.residental {
   min-height: 100vh;
@@ -744,6 +749,7 @@ main .grid-container section.projects .overflow-layer .grid-wrapper > div img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  pointer-events: none;
   transition: transform 1s ease-out;
 }
 main .grid-container section.projects .overflow-layer .grid-wrapper > div span {
@@ -1279,15 +1285,16 @@ body.page-contact main .contact .section-content form {
   max-width: 47rem;
   justify-content: flex-start;
 }
-body.page-contact main .contact .section-content form .form-info {
-  gap: 2.5rem;
-}
-body.page-contact main .contact .section-content form .form-info div {
-  flex: 100%;
-  flex-direction: column;
-}
 body.page-contact main .contact .section-content form div {
   display: flex;
+  position: relative;
+}
+body.page-contact main .contact .section-content form div.form-info {
+  gap: 2.5rem;
+}
+body.page-contact main .contact .section-content form div.form-info div {
+  flex: 100%;
+  flex-direction: column;
 }
 body.page-contact main .contact .section-content form div * {
   flex: 100%;
@@ -1308,6 +1315,26 @@ body.page-contact main .contact .section-content form div input {
 body.page-contact main .contact .section-content form div input:focus {
   outline: none;
 }
+body.page-contact main .contact .section-content form div .invalid-input {
+  display: none;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: center;
+  position: absolute;
+  bottom: -0.5rem;
+  width: 100%;
+}
+body.page-contact main .contact .section-content form div .invalid-input svg {
+  fill: red;
+  width: 2rem;
+  flex: 10%;
+}
+body.page-contact main .contact .section-content form div .invalid-input span {
+  color: red;
+  margin-bottom: 0;
+  font-size: 14px;
+  flex: 90%;
+}
 body.page-contact main .contact .section-content form div textarea {
   margin-bottom: 2.35rem;
   height: 9.2rem;
@@ -1325,6 +1352,15 @@ body.page-contact main .contact .section-content form div input[type=submit] {
   padding: 1.25rem 5rem;
   font-weight: 300;
   max-width: 17.5rem;
+}
+body.page-contact main .contact .section-content form.invalid-input .form-info:has(input:invalid) {
+  margin-bottom: 3rem;
+}
+body.page-contact main .contact .section-content form.invalid-input .form-info div:has(input:invalid) .invalid-input {
+  display: flex !important;
+}
+body.page-contact main .contact .section-content form.invalid-input input:invalid {
+  border-bottom: 1px solid red;
 }
 body.page-contact main .contact .section-img {
   flex: 50%;
